@@ -1,7 +1,7 @@
 # dsh-routed-subagent
 
 
-![License](https://img.shields.io/badge/license-MIT-blue) ![Version](https://img.shields.io/github/v/release/bpc-oss/dsh-routed-subagent) ![CI](https://github.com/bpc-oss/dsh-routed-subagent/actions/workflows/ci.yml/badge.svg)
+![License](https://img.shields.io/badge/license-MIT-blue) ![Version](https://img.shields.io/github/v/release/Xiao-Hong/dsh-routed-subagent) ![CI](https://github.com/Xiao-Hong/dsh-routed-subagent/actions/workflows/ci.yml/badge.svg)
 
 一个 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) 全局插件：让**任意会话**都能派一个**完整挂载到任意 agent preset** 的一次性（one-shot）子代理，支持**按次指定模型/provider** 和**模型可用性预检**。
 
@@ -47,11 +47,19 @@ await subagent_routed({
 
 ## 分发
 
-**仅 GitHub**。本插件**不发布到 npm**，通过挂载包目录安装（见下）。`peerDependencies` 以真实 semver 声明、仅作元数据，不参与 npm 解析。
+**仅 GitHub**。本插件**不发布到 npm**，直接从本仓库安装。`peerDependencies` 以真实 semver 声明、仅作元数据；在标准 DSH 安装中，插件的 `@deepseek-ai/*` import 会从 harness 的共享 profile `node_modules` 解析，无需手动建 junction。
 
-**兼容性**：目标为 DeepSeek Harness **rc.7+**（行为已对照 rc.7 源码核实，并在 rc.8 运行时验证）（本插件依赖的 async 子代理 setup 是较新的 harness 行为）。
+**兼容性**：目标为 DeepSeek Harness **0.1.5-rc.1**（已端到端验证：preset 挂载、跨 preset 委派链、后台任务 + `job_output` 进度、按次模型/provider 覆盖）。更早的 rc 构建早于 0.1.5-rc.1 的 API（`session.snapshotEvents`、布尔 `isSeeded`、`parentAgent`），不受支持。
 
 ## 安装
+
+从本仓库一键安装（`dsh` 需在 PATH 上）：
+
+```sh
+dsh plugin --profile <name> add github:Xiao-Hong/dsh-routed-subagent
+```
+
+重启 `dsh web` 后，`subagent_routed` 即可在任意会话使用。若你的部署 profile 的 `node_modules` 不提供共享的 `@deepseek-ai/*` 层，请改用下面的手动挂载方式。
 
 纯 ESM 包，带 `cordis.patch.yml` bundle 声明。
 

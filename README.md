@@ -1,7 +1,7 @@
 # dsh-routed-subagent
 
 
-![License](https://img.shields.io/badge/license-MIT-blue) ![Version](https://img.shields.io/github/v/release/bpc-oss/dsh-routed-subagent) ![CI](https://github.com/bpc-oss/dsh-routed-subagent/actions/workflows/ci.yml/badge.svg)
+![License](https://img.shields.io/badge/license-MIT-blue) ![Version](https://img.shields.io/github/v/release/Xiao-Hong/dsh-routed-subagent) ![CI](https://github.com/Xiao-Hong/dsh-routed-subagent/actions/workflows/ci.yml/badge.svg)
 
 A global [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) plugin that lets **any session dispatch a one-shot subagent fully mounted on ANY agent preset**, with **per-call model/provider override** and a **model-availability pre-check**.
 
@@ -46,11 +46,19 @@ await subagent_routed({
 
 ## Distribution
 
-**GitHub-only.** This plugin is not published to npm. Install it by mounting the package directory (see below). `peerDependencies` are declared with real semver ranges as metadata; they are not used for npm resolution.
+**GitHub-only.** This plugin is not published to npm; install it straight from this repository. `peerDependencies` are declared with real semver ranges as metadata; on a standard DSH install the plugin's `@deepseek-ai/*` imports resolve from the harness's shared profile `node_modules`, so no manual junction is needed.
 
-**Compatibility**: targets DeepSeek Harness **rc.7+** (behavior verified against rc.7 sources and rc.8 runtime) (the async child setup that this plugin relies on is a recent harness behavior).
+**Compatibility**: targets DeepSeek Harness **0.1.5-rc.1** (verified end-to-end: preset mount, cross-preset delegation chains, background jobs + `job_output` progress, per-call model/provider override). Older rc builds predate the 0.1.5-rc.1 API (`session.snapshotEvents`, boolean `isSeeded`, `parentAgent`) and are not supported.
 
 ## Install
+
+One-command install from this repository (`dsh` must be on PATH):
+
+```sh
+dsh plugin --profile <name> add github:Xiao-Hong/dsh-routed-subagent
+```
+
+Restart `dsh web` and `subagent_routed` appears in every session. If your deployment's profile `node_modules` does not expose the shared `@deepseek-ai/*` layer, fall back to the manual mount below.
 
 The plugin is a plain ESM package with a `cordis.patch.yml` bundle declaration.
 

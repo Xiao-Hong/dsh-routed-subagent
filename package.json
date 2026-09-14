@@ -15,7 +15,7 @@
     "delegation",
     "multi-agent"
   ],
-  "author": "bpc-oss",
+  "author": "Xiao-Hong",
   "engines": {
     "node": ">=22"
   },
@@ -40,11 +40,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bpc-oss/dsh-routed-subagent.git"
+    "url": "git+https://github.com/Xiao-Hong/dsh-routed-subagent.git"
   },
-  "homepage": "https://github.com/bpc-oss/dsh-routed-subagent",
+  "homepage": "https://github.com/Xiao-Hong/dsh-routed-subagent",
   "bugs": {
-    "url": "https://github.com/bpc-oss/dsh-routed-subagent/issues"
+    "url": "https://github.com/Xiao-Hong/dsh-routed-subagent/issues"
   },
   "files": [
     "lib/",
