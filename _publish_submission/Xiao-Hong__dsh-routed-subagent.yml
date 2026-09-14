@@ -1,0 +1,6 @@
+url: https://github.com/Xiao-Hong/dsh-routed-subagent
+name: Xiao-Hong/dsh-routed-subagent
+category: tools
+description:
+  en: Run a one-shot subagent fully mounted on any agent preset from any session, with per-call model/provider override, a model-availability pre-check, and external CLI engines (codex/claude/codebuddy).
+  zh: 从任意会话派发一个完整挂载到任意 agent preset 的一次性子代理，支持按次模型/提供商覆盖、模型可用性预检与外部 CLI 引擎（codex/claude/codebuddy）。
