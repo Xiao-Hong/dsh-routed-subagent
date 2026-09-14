@@ -307,6 +307,18 @@ npm run check
 
 真实功能验证需要运行在已安装 DeepSeek Harness `0.1.5-rc.1` 的环境中，并准备对应的 provider、preset 及外部 CLI 登录状态。
 
+## 来源与版权说明
+
+本仓库基于上游代码修改而来，仓库中继承的原始代码版权声明为：
+
+```text
+Copyright (c) 2026 bpc-oss
+```
+
+原始代码及其衍生部分遵循 MIT License，完整条款见仓库根目录的 `LICENSE` 文件。本仓库的主要修改方向是适配 DeepSeek Harness `0.1.5-rc.1`，并补充 preset 路由、模型/provider 覆盖、后台任务、continuable 续话和 Codex/Claude/CodeBuddy 外部引擎支持；这些修改由 Xiao-Hong 维护。
+
+发布、复制或再分发本项目时，请保留原始版权声明和 MIT 许可文本。若某个文件或第三方依赖带有单独的许可证或版权声明，应同时遵守其适用条款。
+
 ## 许可证
 
 MIT
